@@ -1,3 +1,6 @@
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 /**
  * Philosopher.java
  *
@@ -7,8 +10,7 @@
  */
 
 
-public class Philosopher implements Runnable
-{
+public class Philosopher implements Runnable {
 
     // The forks on either side of this Philosopher 
     private Object leftFork;
@@ -19,14 +21,11 @@ public class Philosopher implements Runnable
         this.rightFork = rightFork;
     }
 
-    // Member variables, standard constructor
-
     private void doAction(String action) throws InterruptedException {
         System.out.println(
           Thread.currentThread().getName() + " " + action);
         Thread.sleep(((int) (Math.random() * 100)));
     }
-    // Member variables, methods defined earlier
 
     @Override
     public void run() {
@@ -34,26 +33,18 @@ public class Philosopher implements Runnable
             while (true) {
                 
                 // thinking
-                doAction(System.nanoTime() + ": Thinking");
+                doAction(": Thinking");
                 synchronized (leftFork) {
-                    doAction(
-                    System.nanoTime() 
-                        + ": Picked up left fork");
+                    doAction(": Picked up left fork");
                     synchronized (rightFork) {
                         // eating
-                        doAction(
-                        System.nanoTime() 
-                            + ": Picked up right fork - eating"); 
+                        doAction(": Picked up right fork - eating"); 
                         
-                        doAction(
-                        System.nanoTime() 
-                            + ": Put down right fork");
+                        doAction(": Put down right fork");
                     }
                     
                     // Back to thinking
-                    doAction(
-                    System.nanoTime() 
-                        + ": Put down left fork. Back to thinking");
+                    doAction(": Put down left fork. Back to thinking");
                 }
             }
         } catch (InterruptedException e) {
@@ -62,3 +53,4 @@ public class Philosopher implements Runnable
         }
     }
 }
+
