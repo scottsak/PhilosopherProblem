@@ -12,13 +12,13 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Philosopher implements Runnable {
 
-    // The forks on either side of this Philosopher 
-    private Object leftFork;
-    private Object rightFork;
+    // Creating objects for forks around the philosopher
+    private Object lfork;
+    private Object rfork;
 
-    public Philosopher(Object leftFork, Object rightFork) {
-        this.leftFork = leftFork;
-        this.rightFork = rightFork;
+    public Philosopher(Object lfork, Object rfork) {
+        this.lfork = lfork;
+        this.rfork = rfork;
     }
 
     private void doAction(String action) throws InterruptedException {
@@ -34,9 +34,9 @@ public class Philosopher implements Runnable {
                 
                 // thinking
                 doAction(": Thinking");
-                synchronized (leftFork) {
+                synchronized (lfork) {
                     doAction(": Picked up left fork");
-                    synchronized (rightFork) {
+                    synchronized (rfork) {
                         // eating
                         doAction(": Picked up right fork - eating"); 
                         

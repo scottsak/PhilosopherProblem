@@ -10,7 +10,7 @@ public class DiningPhilosophers {
 
   public static void main(String[] args) throws Exception {
 
-      final Philosopher[] philosophers = new Philosopher[5];
+      Philosopher[] philosophers = new Philosopher[5];
       Object[] forks = new Object[philosophers.length];
 
       for (int i = 0; i < forks.length; i++) {
@@ -30,6 +30,8 @@ public class DiningPhilosophers {
           }
           
           Thread t = new Thread(philosophers[i], "Philosopher " + (i + 1));
+          
+          //start the thread of Philosophers
           t.start();
       }
   }
