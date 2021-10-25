@@ -23,7 +23,7 @@ public class Philosopher implements Runnable {
 
     private void doAction(String action) throws InterruptedException {
         System.out.println(
-          Thread.currentThread().getName() + " " + action);
+        Thread.currentThread().getName() + " " + action);
         Thread.sleep(((int) (Math.random() * 100)));
     }
 
@@ -40,11 +40,10 @@ public class Philosopher implements Runnable {
                         // eating
                         doAction(": Picked up right fork - eating"); 
                         
-                        doAction(": Put down right fork");
+                        doAction(": Put down both forks");
                     }
-                    
                     // Back to thinking
-                    doAction(": Put down left fork. Back to thinking");
+                    //doAction(": Put down left fork. Back to thinking");
                 }
             }
         } catch (InterruptedException e) {

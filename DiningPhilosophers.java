@@ -29,7 +29,7 @@ public class DiningPhilosophers {
               philosophers[i] = new Philosopher(leftFork, rightFork);
           }
           
-          Thread t = new Thread(philosophers[i], "Philosopher " + (i + 1));
+          Thread t = new Thread(philosophers[i], "Philosopher " + (i));
           
           //start the thread of Philosophers
           t.start();
